@@ -44,4 +44,78 @@ react Hook 的一些 demo
 
 那么。。。
 
-当使用 react hooks 之后对这些问题都会有一些非常好的解决方案npm init react-app
+当使用 react hooks 之后对这些问题都会有一些非常好的解决方案
+
+
+
+接下来开始 react Hooks 的案例学习   ![happy](https://pic.qqtn.com/up/2019-6/2019062814291962780.gif)
+
+**useState 点赞案例:**
+
+基本语法：
+
+```react
+const [state, setState] = useState(initialState);
+```
+
+1. useState 返回 stateful(有状态) 值，以及更新这个状态值的函数
+2. initialState 即 state 的初始值
+
+实现点赞案例，主要代码：
+
+```react
+const [dot, setDot] = useState(0);
+...
+<div onClick={() => setDot(dot + 1)}></div>
+...
+// 好像...超级简单...
+```
+
+具体代码点这：[这](https://github.com/weily22/react_hooks/blob/master/src/pages/UseStateDemo/UseEffectDemo.jsx)
+
+效果预览：
+
+![img_md](./static/img_md.jpg) 
+
+
+
+**useEffect 点赞案例 上:**
+
+基本语法：
+
+```react
+useEffect(didUpdate);
+```
+
+1. 本身是一个函数，且接受一个函数，接受的这个函数包含强制性，可能有 effectful（副作用） 代码的函数
+2. 副作用 ：就是说函数的这个行为不仅仅会影响到函数自身作用域内的一些改变，，还会涉及到其作用域外的一些影响。
+
+`useEffect(didUpdate)` 这句代码的意思就是，
+
+告诉react 渲染后要做什么，类似于：componentDidMount，componentDidUpdate，componentWillUnmount，但是统一成了一个 api
+
+3. 默认情况下，效果在每次完成渲染后运行，但是你可以选择 [仅在某些值发生更改时](http://react.html.cn/docs/hooks-reference.html#conditionally-firing-an-effect) 触发它
+
+demo:
+
+每次点赞完，就显示文字被点赞了：
+
+主要代码：
+
+```react
+useEffect(() => {
+    console.log('我被渲染了');
+    if (dot) {
+      document.getElementById('heart').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('heart').style.display = 'none';
+      }, 800)
+    }
+  });
+```
+
+具体代码点这：[这](https://github.com/weily22/react_hooks/blob/master/src/pages/UseEffectDemo/UseEffectDemo.jsx)
+
+效果预览：
+
+![img_md2](./static/img_md2.jpg)
