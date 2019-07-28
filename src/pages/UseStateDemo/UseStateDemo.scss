@@ -1,0 +1,61 @@
+.use-state-demo {
+    background-color: #f4f5f5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    .sidebar-panel {
+        width: 100px;
+        padding: 20px;
+        position: fixed;
+        top: 10rem;
+    }
+
+    .panel-item {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.04);
+        cursor: pointer;
+        margin-bottom: .75rem;
+        position: relative;
+
+        &:not(.none):after {
+            content: attr(badge);
+            position: absolute;
+            top: 0;
+            left: 75%;
+            padding: .1rem .4rem;
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1;
+            white-space: nowrap;
+            color: #fff;
+            background-color: #b2bac2;
+            border-radius: .7rem;
+            transform-origin: left top;
+            transform: scale(.75);
+        }
+
+        &:hover {
+            i {
+                color: #57a1e2
+            }
+        }
+    }
+
+    i {
+        &.high-zan,
+        &.high-news,
+        &.high-heart
+        {
+            color: #b1bac2;
+            font-size: 16px;
+        }
+    }
+}
